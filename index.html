@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #f9f9f9;
+      color: #111;
+      margin: 10px;
+      font-size: 11px;
+    }
+    h1 {
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .program {
+      margin-bottom: 12px;
+      padding: 4px;
+    }
+    .program h3 {
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+    button {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      color: #111;
+      font-size: 10px;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ddd;
+    }
+    .hidden-code {
+      display: none;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Programs</h1>
+
+<!-- Program 1 -->
+<div class="program">
+  <h3>1. Program 1</h3>
+  <div id="code1" class="hidden-code">
+    int leds[] = {2,3,4,5,6};
+void setup()
+{
+  for(int i = 0;i<5;i++)
+    pinMode(leds[i],OUTPUT);
+}
+
+void loop()
+{
+  for(int i=0;i<5;i++)
+  {
+    digitalWrite(leds[i],HIGH);
+    delay(1000);
+    digitalWrite(leds[i],LOW);
+  }
+  for(int i=3;i>=0;i--)
+  {
+    digitalWrite(leds[i],HIGH);
+    delay(1000);
+    digitalWrite(leds[i],LOW);
+  }
+}
+
+  </div>
+  <button onclick="copyCode('code1')">Copy</button>
+</div>
+
+<!-- Program 2 -->
+<div class="program">
+  <h3>2. Program 2</h3>
+  <div id="code2" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code2')">Copy</button>
+</div>
+
+<!-- Program 3 -->
+<div class="program">
+  <h3>3. Program 3</h3>
+  <div id="code3" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code3')">Copy</button>
+</div>
+
+<!-- Program 4 -->
+<div class="program">
+  <h3>4. Program 4</h3>
+  <div id="code4" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code4')">Copy</button>
+</div>
+
+<!-- Program 5 -->
+<div class="program">
+  <h3>5. Program 5</h3>
+  <div id="code5" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code5')">Copy</button>
+</div>
+
+<!-- Program 6 -->
+<div class="program">
+  <h3>6. Program 6</h3>
+  <div id="code6" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code6')">Copy</button>
+</div>
+
+<!-- Program 7 -->
+<div class="program">
+  <h3>7. Program 7</h3>
+  <div id="code7" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code7')">Copy</button>
+</div>
+
+<!-- Program 8 -->
+<div class="program">
+  <h3>8. Program 8</h3>
+  <div id="code8" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code8')">Copy</button>
+</div>
+
+<!-- Program 9 -->
+<div class="program">
+  <h3>9. Program 9</h3>
+  <div id="code9" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code9')">Copy</button>
+</div>
+
+<!-- Program 10 -->
+<div class="program">
+  <h3>10. Program 10</h3>
+  <div id="code10" class="hidden-code">
+    <!-- Paste your code here -->
+  </div>
+  <button onclick="copyCode('code10')">Copy</button>
+</div>
+
+<script>
+  function copyCode(id) {
+    const code = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      alert("Copied");
+    });
+  }
+</script>
+
+</body>
+</html>
