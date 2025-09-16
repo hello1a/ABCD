@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #f9f9f9;
+      color: #111;
+      margin: 10px;
+      font-size: 11px;
+    }
+    h1 {
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .program {
+      margin-bottom: 12px;
+      padding: 4px;
+    }
+    .program h3 {
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+    button {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      color: #111;
+      font-size: 10px;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ddd;
+    }
+    .hidden-code {
+      display: none;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Programs</h1>
+
+<!-- Program 1 -->
+<div class="program">
+  <h3>1. Program 1</h3>
+  <div id="code1" class="hidden-code">
+    int leds[] = {2,3,4,5,6};
+void setup()
+{
+  for(int i = 0;i<5;i++)
+    pinMode(leds[i],OUTPUT);
+}
+
+void loop()
+{
+  for(int i=0;i<5;i++)
+  {
+    digitalWrite(leds[i],HIGH);
+    delay(1000);
+    digitalWrite(leds[i],LOW);
+  }
+  for(int i=3;i>=0;i--)
+  {
+    digitalWrite(leds[i],HIGH);
+    delay(1000);
+    digitalWrite(leds[i],LOW);
+  }
+}
+
+  </div>
+  <button onclick="copyCode('code1')">Copy</button>
+</div>
+
+<!-- Program 2 -->
+<div class="program">
+  <h3>2. Program 2</h3>
+  <div id="code2" class="hidden-code">
+   const int relayPin = 7; 
+
+void setup() {
+  
+  pinMode(2, OUTPUT);
+}
+
+void loop() {
+  
+  digitalWrite(2, HIGH); 
+  delay(2000); 
+
+
+  digitalWrite(2, LOW); 
+  delay(2000); 
+}
+
+  </div>
+  <button onclick="copyCode('code2')">Copy</button>
+</div>
+
+<!-- Program 3 -->
+<div class="program">
+  <h3>3. Program 3</h3>
+  <div id="code3" class="hidden-code">
+ // Define pins
+const int trigPin = 9;
+const int echoPin = 10;
+const int greenLed = 7;
+const int redLed = 8;
+
+// Variables for distance measurement
+long duration;
+int distance;
+int safeDistance = 30; // Distance threshold in cm (adjust as needed)
+
+void setup() {
+  pinMode(trigPin, OUTPUT); // Sets trigPin as Output
+  pinMode(echoPin, INPUT); // Sets echoPin as Input
+  pinMode(greenLed, OUTPUT);
+  pinMode(redLed, OUTPUT);
+  Serial.begin(9600); // Starts serial communication
+}
+
+void loop() {
+  // Clear the trigPin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  
+  // Set the trigPin on HIGH state for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+// Read the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  
+  // Calculating the distance
+  distance = duration * 0.034 / 2;
+  
+  // Print distance on serial monitor
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  
+  // Check if object is within safe distance
+  if (distance < safeDistance) {
+    // Intrusion detected
+    digitalWrite(redLed, HIGH);
+    digitalWrite(greenLed, LOW);
+    Serial.println("INTRUDER DETECTED!");
+  } else {
+    // Area clear
+    digitalWrite(redLed, LOW);
+    digitalWrite(greenLed, HIGH);
+  }
+  
+  delay(500); // Small delay between readings
+}
+
+  </div>
+  <button onclick="copyCode('code3')">Copy</button>
+</div>
+
+<!-- Program 4 -->
+<div class="program">
+  <h3>4. Program 4</h3>
+  <div id="code4" class="hidden-code">
+   void setup()
+{
+pinMode(13, OUTPUT);
+pinMode(12, OUTPUT);
+}
+
+void loop()
+{
+digitalWrite(13, HIGH);
+delay(1000); // Wait for 1000 millisecond(s)
+digitalWrite(12, LOW);
+delay(1000); // Wait for 1000 millisecond(s)
+digitalWrite(13, LOW);
+delay(1000); // Wait for 1000 millisecond(s)
+digitalWrite(12, HIGH);
+delay(1000); // Wait for 1000 millisecond(s)
+}
+
+  </div>
+  <button onclick="copyCode('code4')">Copy</button>
+</div>
+
+<!-- Program 5 -->
+<div class="program">
+  <h3>5. Program 5</h3>
+  <div id="code5" class="hidden-code">
+    int LDR_VAL = 0;   // Variable to store LDR reading
+
+void setup()
+{
+  pinMode(A0, INPUT);      // LDR sensor connected to analog pin A0
+  Serial.begin(9600);      // Start Serial Monitor
+  pinMode(8, OUTPUT);      // LED (street light) connected to pin 8
+}
+
+void loop()
+{
+  LDR_VAL = analogRead(A0);      // Read the LDR value (0–1023)
+  Serial.println(LDR_VAL);       // Print value to Serial Monitor
+
+  if (LDR_VAL > 500) {           // If it is dark (value is low)
+    digitalWrite(8, HIGH);       // Turn ON street light
+    Serial.println("Street Light ON");
+  } else {                       // If it is bright (value is high)
+    digitalWrite(8, LOW);        // Turn OFF street light
+    Serial.println("Street Light OFF");
+  }
+
+  delay(200);                    // Small delay for stability
+}
+
+  </div>
+<button onclick="copyCode('code5')">Copy</button>
+
+
+
+
+<!-- Program 6 -->
+<div class="program">
+  <h3>5. Program 5</h3>
+  <div id="code5" class="hidden-code">
+    // declare variables for pins
+const int sensorpin = A0;
+const int sensorpower = 8;
+const int LED1 = 2;
+const int LED2 = 3;
+const int LED3 = 4;
+// variable for sensor reading
+int sensor;
+const int delayTime = 1000;
+// "wet" and "dry" thresholds - these require calibration
+int wet = 800;
+int dry = 500;
+void setup(){ // code that only runs once
+// set pins as outputs
+pinMode(LED1,OUTPUT);
+pinMode(LED2,OUTPUT);
+pinMode(LED3,OUTPUT);
+pinMode(sensorpower,OUTPUT);
+// initialize serial communication
+Serial.begin(9600);
+}
+void loop(){ // code that loops forever
+// power on sensor and wait briefly
+digitalWrite(sensorpower,HIGH);
+delay(10);
+// take reading from sensor
+sensor = analogRead(sensorpin);
+// turn sensor off to help prevent corrosion
+digitalWrite(sensorpower,LOW);
+// print sensor reading
+Serial.println(sensor);
+// If sensor reading is greater than "wet" threshold,
+// turn on the blue LED. If it is less than the "dry"
+// threshold, turn on the red LED. If it is in between
+// the two values, turn on the yellow LED.
+if(sensor>wet){
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+}
+else if(sensor<dry){
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+}
+else{
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+}
+// wait before taking next reading
+delay(delayTime);
+}
+  </div>
+<button onclick="copyCode('code6')">Copy</button>
